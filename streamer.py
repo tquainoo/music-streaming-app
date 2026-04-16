@@ -182,7 +182,7 @@ def song_catalogue(service: MusicServer) -> None:       # Song catalong function
 
     artiste3 = Artiste("2pac")
     artiste3.add_song(Song("Hail Mary", 300, "Rap"))
-    artiste3.add_song(Song("Dear Mama", 195, "Rap"))
+    artiste3.add_song(Song("By Mama", 195, "Rap"))
 
     for artiste in (artiste1, artiste2, artiste3):
         service.add_artiste(artiste)
@@ -193,7 +193,7 @@ def main() -> None:                         # Main function to runs the music st
     service = MusicServer()
     song_catalogue(service)
 
-    print("Welcome to My Music Streaming Service App!")
+    print("Welcome to My Music Streaming App!")
     while True:
         print("\n" + "=" * 40)  # Number of times i want to use the = to create a visual separator in the menu.
         print("  1. Display available songs")
@@ -217,7 +217,7 @@ def main() -> None:                         # Main function to runs the music st
                 prompt_rating(song)
 
         elif choice == "4":
-            print("\nThank you for using this Music Streaming Service. Goodbye!")
+            print("\nThank you for using this Music Streaming App. Goodbye!")
             break
 
         else:
