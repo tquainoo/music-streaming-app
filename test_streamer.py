@@ -1,10 +1,10 @@
-import unittest
-from streamer import Song, Artiste, MusicServer   
+import unittest                                     # Importing the unittest module to create unit tests for the music streaming app. 
+from streamer import Song, Artiste, MusicServer     # Importing the Song, Artiste, and MusicServer classes from the streamer module to be tested in the TestMusicApp class.
 
 
-class TestMusicSystem(unittest.TestCase):
+class TestMusicApp(unittest.TestCase):           # Test class for the music streaming App that inherits from unittest.TestCase to create unit tests for the Song, Artiste, and MusicServer classes.
 
-    def test_add_song_to_artiste(self):
+    def test_add_song_to_artiste(self):             # Test method to verify that a song can be added to an artiste's song list and that the song's details are correctly stored.
         # Arrange
         artiste = Artiste("2pac")
         song = Song("Dear Mama", 180, "Rap")
@@ -16,7 +16,7 @@ class TestMusicSystem(unittest.TestCase):
         self.assertEqual(len(artiste.songs), 1)
         self.assertEqual(artiste.songs[0].title, "Dear Mama")
 
-    def test_add_multiple_songs_to_artiste(self):
+    def test_add_multiple_songs_to_artiste(self):             # Test method to verify that multiple songs can be added to an artiste's song list.
         # Arrange
         artiste = Artiste("2pac")
         song1 = Song("Hail Mary", 300, "Rap")
@@ -29,7 +29,7 @@ class TestMusicSystem(unittest.TestCase):
         # Assert
         self.assertEqual(len(artiste.songs), 2)
 
-    def test_song_title_contains_by(self):
+    def test_song_title_contains_by(self):       # Test method to verify that a song with "by" as part of a word in the title can be streamed correctly from the music server.
         # Arrange
         server = MusicServer()
         artiste = Artiste("2pac")
@@ -47,7 +47,8 @@ class TestMusicSystem(unittest.TestCase):
         self.assertEqual(result.genre, "Rap")
 
     
-    def test_song_title_has_by_word(self):
+    def test_song_title_has_by_word(self):      # Test method to verify that a song with "by" as a separate word in the title can be streamed correctly from the music server.# This test checks that the streaming functionality can handle song titles that include "by" as a word, ensuring that the correct song is retrieved based on the provided title and artiste name.
+
         # Arrange
         server = MusicServer()
         artiste = Artiste("2pac")
@@ -65,7 +66,7 @@ class TestMusicSystem(unittest.TestCase):
         self.assertEqual(result.genre, "Rap")
 
  
-    def test_add_multiple_artistes(self):
+    def test_add_multiple_artistes(self):       # Test method to verify that multiple artistes can be added to the music server and that they are stored correctly in the server's artiste list. This test ensures that the server can manage multiple artistes without any issues.    
         # Arrange
         server = MusicServer()
         artiste1 = Artiste("Shakira")
@@ -78,7 +79,7 @@ class TestMusicSystem(unittest.TestCase):
         # Assert
         self.assertEqual(len(server.artistes), 2)
 
-    def test_case_insensitive_artiste(self):
+    def test_case_insensitive_artiste(self):    # Test method to verify that the music server can handle artiste names in a case-insensitive manner when adding artistes. This test checks that the server stores artiste names in lowercase and can retrieve them correctly regardless of the case used when adding or streaming songs.
         # Arrange
         server = MusicServer()
         artiste = Artiste("Shakira")
