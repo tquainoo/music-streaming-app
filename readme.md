@@ -203,5 +203,8 @@ Or directly:
 ## Author
 
 Developed as part of a programming project to demonstrate OOP concepts in Python.
-
+Author Name: Theodulph Sekyi Quainoo
+Student ID:  52536877
+Course:      Advanced Programming
+Lecturer:    Dr. Miles Everett
 ---
