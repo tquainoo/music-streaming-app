@@ -173,6 +173,31 @@ The system includes preloaded artists and songs:
 * Add search and filtering features
 * Replace countdown with progress bar
 
+
+---
+
+## UNit Testing
+
+I have included a unit testing file to ensure that:
+* Songs are correctly added to artistes
+* Multiple songs can be stored properly
+* Multiple artistes can be added to the music server
+* The system correctly handles song titles containing the word "by"
+* The system supports case-insensitive artiste storage
+* The streaming function returns correct results.
+
+Run the following command in your terminal:
+
+  ```bash
+   python -m unittest
+   ```
+
+Or directly:
+
+  ```bash
+   python test_streamer.py
+   ```
+
 ---
 
 ## Author
