@@ -1,19 +1,24 @@
-# Project Title: Music Streaming Service
+# Project Title: Music Streaming App
 # Project Description: A simple object-oriented music streaming service that allows users to 
-# browse songs and artistes, stream music, and rate tracks.
-"""
-Created 3 classes:
-Song         - This class Handles song tracks in the catalogue.
-Artiste      - This class Handles artist with a list of songs.
-MusicServer  - This class Manages the catalogue and handles user operations.
-"""
+# browse songs and artistes, stream music, and rate songs.
+# I Created 3 classes below:
+# Song         - This class Handles song tracks in the catalogue.
+# Artiste      - This class Handles artist with a list of songs.
+# MusicServer  - This class Manages the catalogue and handles user operations.
+
 #import time module to help simulate streaming duration
 import time
 
 # Streaming_timer variable multiplier to make the songs stream in a shorter time. For example, with a multiplier of 20.
 Streaming_timer = 20
 
-# Created Song class with attributes title, duration, genre and ratings. It has methods to calculate average rating(average_rating), add a new rating(add_rating), format the average rating for display and a string representation of the song. Ratings are stored as a list of integers.
+# Created Song class with attributes the following attributes:
+# title, 
+# duration, 
+# genre and 
+# ratings. 
+# It has methods to calculate average_rating(), add a new add_rating() method. 
+# Ratings are stored as a list of integers.
 
 class Song:
     def __init__(self, title: str, duration: int, genre: str) -> None:
@@ -48,7 +53,11 @@ class Song:
         )
 
 
-class Artiste:                                      # Artiste class with attributes name and songs. It has methods to add a song to the artist's catalogue, find a song by title, and provide a string representation of the artist and their songs. The songs attribute is a list of Song objects associated with the artist.
+class Artiste:                                      
+# Artiste class has attributes: 
+# name and 
+# songs.
+# It has methods to add a song to the artist's catalogue, find a song by title, and provide a string representation of the artist and their songs.
    
     def __init__(self, name: str) -> None:          # Initialize the Artiste with a name and an empty list of songs.
       
@@ -59,7 +68,7 @@ class Artiste:                                      # Artiste class with attribu
        
         self.songs.append(song)
 
-    def find_song(self, title: str) -> Song | None: # find_song method performs a case-insensitive search for a song by title within the artist's catalogue. It returns the matching Song object if found, or None if no match is found.
+    def find_song(self, title: str) -> Song | None: # find_song method performs a case-insensitive search for a song by title and returns the matching Song object if found, or None if no match is found.
         
         title_lower = title.strip().lower()
         for song in self.songs:
@@ -81,11 +90,11 @@ class MusicServer:
        
         self.artistes: dict[str, Artiste] = {}
 
-    def add_artiste(self, artiste: Artiste) -> None:    # add an artist to the service, using a case-insensitive key in the artistes dictionary to allow for flexible lookups when streaming songs.
+    def add_artiste(self, artiste: Artiste) -> None:    # add an artist to the service, storing the artist's name in lowercase. This allows for case-insensitive retrieval of artists when streaming songs.
        
         self.artistes[artiste.name.lower()] = artiste
 
-    def display_songs(self) -> None:                    # Display all available songs across every artist in the catalogue, along with the artist's name for each song. If no songs are available, it prints the message No songs available.
+    def display_songs(self) -> None:                    # Display all available songs along with the artist's name for each song. If no songs are available, it prints the message No songs available.
        
         print("\n--- Available Songs ---")
         any_songs = False
@@ -147,7 +156,7 @@ class MusicServer:
         return song
 
 
-def prompt_rating(song: Song) -> None:                      # Ask the user whether they want to rate a song, then record the rating. If the user chooses to rate, it prompts for a rating between 1 and 5. The function handles invalid input and allows the user to correct their input without crashing the my streaming app. If a valid rating is submitted, it updates the song's ratings and displays the new average rating.
+def prompt_rating(song: Song) -> None:                      # Ask the user whether they want to rate a song. If the user chooses to rate, it prompts for a rating between 1 and 5. The function handles invalid input and allows the user to correct their input without crashing the my streaming app. If a valid rating is submitted, it updates the song's ratings and displays the new average rating.
    
     answer = input("  Would you like to rate this song? (yes/no): ").strip().lower()
     #if answer != "yes":
@@ -188,7 +197,7 @@ def song_catalogue(service: MusicServer) -> None:       # Song catalong function
         service.add_artiste(artiste)
 
 
-def main() -> None:                         # Main function to runs the music streaming service. It initializes the MusicServer, populates it with a sample catalogue of artists and songs to present in the menu of options to the user. The user can choose to display available songs, display available artists, stream a song by entering its title and artist, or exit the application.
+def main() -> None:                         # Main function to runs the music streaming service. It initializes the MusicServer, populates it with a sample catalogue of artists and songs to present in the menu of options to the user. This is where a user can choose to display available songs, display available artists, stream a song by entering its title and artist, or exit the application.
    
     service = MusicServer()
     song_catalogue(service)
