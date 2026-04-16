@@ -132,9 +132,17 @@ class MusicServer:
             return None
 
         # Streaming the song.
-        stream_seconds = song.duration / Streaming_timer
+        #stream_seconds = song.duration / Streaming_timer
+
+        # Streaming the song with countdown to show progress.
+        stream_seconds = int(song.duration / Streaming_timer)
         print(f"\n  Now streaming '{song.title}' by {artiste.name}...")
-        time.sleep(stream_seconds)
+        
+        for i in range(stream_seconds, 0, -1):          # Code modified to display countdown of remaining seconds while streaming, instead of just sleeping for the entire duration. This provides a more interactive experience for the user.
+            print(f"  {i} seconds remaining...")
+            time.sleep(1)
+
+        #time.sleep(stream_seconds)
         print("  Finished streaming.\n")
         return song
 
@@ -142,7 +150,9 @@ class MusicServer:
 def prompt_rating(song: Song) -> None:                      # Ask the user whether they want to rate a song, then record the rating. If the user chooses to rate, it prompts for a rating between 1 and 5. The function handles invalid input and allows the user to correct their input without crashing the my streaming app. If a valid rating is submitted, it updates the song's ratings and displays the new average rating.
    
     answer = input("  Would you like to rate this song? (yes/no): ").strip().lower()
-    if answer != "yes":
+    #if answer != "yes":
+    # Accept yes/no and y/n for flexibility.
+    if answer not in ("yes", "y"):
         return
 
     while True:
@@ -184,7 +194,6 @@ def main() -> None:                         # Main function to runs the music st
     song_catalogue(service)
 
     print("Welcome to My Music Streaming Service App!")
-
     while True:
         print("\n" + "=" * 40)  # Number of times i want to use the = to create a visual separator in the menu.
         print("  1. Display available songs")
